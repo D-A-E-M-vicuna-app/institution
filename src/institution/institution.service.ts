@@ -37,7 +37,11 @@ export class InstitutionService {
     if (!institution) {
       throw new Error('Institution not found');
     }
-    
+    //comprobar que newName no esta en la base de datos ya
+    /*const existingInstitution = await this.institutionRepository.findOne({ where: { name: newName } });
+    if (existingInstitution) {
+      throw new Error('Institution already exists');
+    }*/
     // Si newName, newEmail o newPhoneNumber no son undefined, actualiza el campo correspondiente
     if (newName !== undefined) institution.name = newName;
     if (newEmail !== undefined) institution.email = newEmail;
