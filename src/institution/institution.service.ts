@@ -27,8 +27,17 @@ export class InstitutionService {
     return this.institutionRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} institution`;
+  findOne(id: number): Promise<Institution>{
+    try {
+      const institution = this.institutionRepository.findOne({ where: { id } });
+      if (!institution) {
+        throw new Error('Institution not found');
+      }
+      return institution;
+    } catch (error) {
+      console.log(error);
+      throw new Error('Institution not found');
+    }
   }
 
   async update(updateInstitutionInput: UpdateInstitutionInput): Promise<UpdateInstitutionResponse> {

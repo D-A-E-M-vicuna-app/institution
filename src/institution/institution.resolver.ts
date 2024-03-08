@@ -21,7 +21,7 @@ export class InstitutionResolver {
   }
 
   @Query(() => Institution, { name: 'institution' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(@Args('id', { type: () => Int }) id: number): Promise<Institution>{
     return this.institutionService.findOne(id);
   }
 
