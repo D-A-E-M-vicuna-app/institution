@@ -10,7 +10,7 @@ async function bootstrap() {
       allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
   
   })
-  await app.listen(3004);
+  await app.listen(process.env.PORT ||3004);
   console.log("[*] Awaiting RPC requests institution");
 }
 bootstrap();
